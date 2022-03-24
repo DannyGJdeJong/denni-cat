@@ -1,8 +1,10 @@
-import { Button } from "@mui/material";
+import { Button, SvgIconProps } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import { Dennis } from "../../assets/denni";
 import { BARQ_URL, DISCORD_URL, TELEGRAM_URL, TWITTER_URL } from "../../constants";
+import { Telegram, Twitter } from "@mui/icons-material";
+import { Barq, Discord } from "../../assets/logos";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -17,9 +19,20 @@ const Row = styled.div`
   margin-bottom: 5px;
 `;
 
-export const Link = ({ href, text }: { href: string; text: string }): React.ReactElement => {
+export const Link = ({
+  href,
+  text,
+  icon,
+}: {
+  href: string;
+  text: string;
+  icon: React.FunctionComponent<SvgIconProps>;
+}): React.ReactElement => {
+  const Icon = icon;
+
   return (
     <Button href={href} variant="contained">
+      <Icon sx={{ mr: 1 }} />
       {text}
     </Button>
   );
@@ -34,16 +47,16 @@ export const Home = (): React.ReactElement => {
         </div>
       </Row>
       <Row>
-        <Link href={TELEGRAM_URL} text="Telegram" />
+        <Link href={TELEGRAM_URL} text="Telegram" icon={Telegram} />
       </Row>
       <Row>
-        <Link href={DISCORD_URL} text="Discord" />
+        <Link href={DISCORD_URL} text="Discord" icon={Discord} />
       </Row>
       <Row>
-        <Link href={TWITTER_URL} text="Twitter" />
+        <Link href={TWITTER_URL} text="Twitter" icon={Twitter} />
       </Row>
       <Row>
-        <Link href={BARQ_URL} text="barq" />
+        <Link href={BARQ_URL} text="barq" icon={Barq} />
       </Row>
     </PageContainer>
   );
