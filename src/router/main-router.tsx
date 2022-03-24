@@ -3,16 +3,16 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import ROUTES from "./routes";
 
-import Example from "../domain/example";
+import Home from "../domain/home";
 import { Layout } from "../components/layout";
 
 export const Router = (): React.ReactElement => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={ROUTES.EXAMPLE}>
+        <Route exact path={ROUTES.HOME}>
           <Layout>
-            <Example />
+            <Home />
           </Layout>
         </Route>
       </Switch>
