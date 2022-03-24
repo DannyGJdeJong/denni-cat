@@ -5,6 +5,7 @@ import ROUTES from "./routes";
 
 import { Layout } from "../components/layout";
 import Home from "../domain/home";
+import AD from "../domain/ad";
 
 export const Router = (): React.ReactElement => {
   return (
@@ -13,6 +14,11 @@ export const Router = (): React.ReactElement => {
         <Route exact path={ROUTES.HOME}>
           <Layout>
             <Home />
+          </Layout>
+        </Route>
+        <Route exact path={ROUTES.AD}>
+          <Layout>
+            <AD />
           </Layout>
         </Route>
         <Route path="">

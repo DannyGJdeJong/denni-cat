@@ -56,6 +56,9 @@ export const Home = (): React.ReactElement => {
         <Link href={TWITTER_URL} text="Twitter" icon={Twitter} />
       </Row>
       <Row>
+        <Link href="/ad" text="AD Twitter" icon={Twitter} />
+      </Row>
+      <Row>
         <Link href={BARQ_URL} text="barq" icon={Barq} />
       </Row>
     </PageContainer>
