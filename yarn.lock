@@ -1979,6 +1979,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource/roboto@npm:^4.5.5":
+  version: 4.5.5
+  resolution: "@fontsource/roboto@npm:4.5.5"
+  checksum: 1828ae19af4ccbff2892087ef0ac848d3f3a7a63e8af076ed82f3cd1650bd1d43ddf30acf6e0f43f8afdb6154614dc14ef89a3b93291d07f703f8651e535aa56
+  languageName: node
+  linkType: hard
+
 "@hapi/address@npm:2.x.x":
   version: 2.1.4
   resolution: "@hapi/address@npm:2.1.4"
@@ -7667,6 +7674,7 @@ __metadata:
   dependencies:
     "@emotion/react": ^11.8.2
     "@emotion/styled": ^11.8.1
+    "@fontsource/roboto": ^4.5.5
     "@mui/icons-material": ^5.5.1
     "@mui/material": ^5.5.2
     "@testing-library/jest-dom": ^5.11.4
