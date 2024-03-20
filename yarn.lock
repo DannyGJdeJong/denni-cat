@@ -6395,6 +6395,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv@npm:^16.4.5":
+  version: 16.4.5
+  resolution: "dotenv@npm:16.4.5"
+  checksum: 5c2dc61337efdb05ed7a9ec5655a0c22653229c3d50f90ec583a79f9ce1c70902275b4f724099b19b6a0d6d2f1018311ac2ae1582ebb3196f142c9656df58597
+  languageName: node
+  linkType: hard
+
 "duplexer@npm:^0.1.1":
   version: 0.1.2
   resolution: "duplexer@npm:0.1.2"
@@ -7688,6 +7695,7 @@ __metadata:
     "@types/styled-components": ^5.1.24
     "@typescript-eslint/parser": ^4.25.0
     axios: ^0.21.1
+    dotenv: ^16.4.5
     eslint: ^7.27.0
     eslint-config-react-app: ^6.0.0
     prettier: ^2.3.0
