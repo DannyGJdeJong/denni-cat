@@ -2,9 +2,9 @@ import { Button, SvgIconProps } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import { Dennis } from "../../assets/denni";
-import { BARQ_URL, BLUESKY_URL, DISCORD_URL, MASTODON_URL, TELEGRAM_URL, TWITTER_URL } from "../../constants";
+import { BARQ_URL, BLUESKY_URL, DISCORD_URL, MASTODON_URL, TELEGRAM_URL, TIKTOK_URL, TWITTER_URL } from "../../constants";
 import { Cloud, Telegram, Twitter } from "@mui/icons-material";
-import { Barq, Discord, Mastodon } from "../../assets/logos";
+import { Barq, Discord, Mastodon, TikTok } from "../../assets/logos";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -63,6 +63,9 @@ export const Home = (): React.ReactElement => {
       </Row>
       <Row>
         <Link href={BLUESKY_URL} text="Bluesky" icon={Cloud} />
+      </Row>
+      <Row>
+        <Link href={TIKTOK_URL} text="TikTok" icon={TikTok} />
       </Row>
       <Row>
         <Link href={BARQ_URL} text="barq" icon={Barq} />
