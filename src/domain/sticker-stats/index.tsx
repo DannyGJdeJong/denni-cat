@@ -23,7 +23,7 @@ export const StickerStats = (): React.ReactElement => {
 
       return (await res.json()) as StickerStatsResponse;
     },
-    refetchInterval: 30000,
+    refetchInterval: 5000,
   });
 
   const [oldPackUsage, setOldPackUsage] = React.useState(0);
