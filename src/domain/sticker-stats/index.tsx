@@ -39,7 +39,7 @@ export const StickerStats = (): React.ReactElement => {
   return (
     <Box sx={{ width: "100%", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
       {packUsageQuery.status === "success" ? (
-        <NumberTicker startValue={oldPackUsage} endValue={packUsageQuery.data.packUsage.total_usage} />
+        <NumberTicker startValue={oldPackUsage} endValue={packUsageQuery.data.packUsage.total_usage} textSize="min(16vw, 16rem)" />
       ) : (
         <></>
       )}
