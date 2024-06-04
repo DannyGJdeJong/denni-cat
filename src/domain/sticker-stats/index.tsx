@@ -19,7 +19,7 @@ export const StickerStats = (): React.ReactElement => {
   const packUsageQuery = useQuery({
     queryKey: ["packUsage"],
     queryFn: async () => {
-      const res = await fetch(new URL(`${API_URL}api/pack-usage/371151432834875396`).href);
+      const res = await fetch(new URL("/api/pack-usage/371151432834875396", API_URL).href);
 
       return (await res.json()) as StickerStatsResponse;
     },
