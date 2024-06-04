@@ -6,6 +6,7 @@ import ROUTES from "./routes";
 import { Layout } from "../components/layout";
 import Home from "../domain/home";
 import AD from "../domain/ad";
+import StickerStats from "../domain/sticker-stats";
 
 export const Router = (): React.ReactElement => {
   return (
@@ -19,6 +20,11 @@ export const Router = (): React.ReactElement => {
         <Route exact path={ROUTES.AD}>
           <Layout>
             <AD />
+          </Layout>
+        </Route>
+        <Route exact path={ROUTES.STICKER_STATS}>
+          <Layout>
+            <StickerStats />
           </Layout>
         </Route>
         <Route path="">

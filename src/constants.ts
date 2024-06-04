@@ -11,3 +11,4 @@ export const TWITTER_URL = process.env.REACT_APP_TWITTER_URL || "";
 export const MASTODON_URL = process.env.REACT_APP_MASTODON_URL || "";
 export const BLUESKY_URL = process.env.REACT_APP_BLUESKY_URL || "";
 export const TIKTOK_URL = process.env.REACT_APP_TIKTOK_URL || "";
+export const API_URL = process.env.REACT_APP_API_URL || "";
