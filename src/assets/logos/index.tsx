@@ -1,9 +1,9 @@
 import { SvgIcon, SvgIconProps } from "@mui/material";
 
-import { ReactComponent as IDiscord } from "./discord.svg";
-import { ReactComponent as IBarq } from "./barq.svg";
-import { ReactComponent as IMastodon } from "./mastodon.svg";
-import { ReactComponent as ITikTok } from "./tiktok.svg";
+import IDiscord from "./discord.svg?react";
+import IBarq from "./barq.svg?react";
+import IMastodon from "./mastodon.svg?react";
+import ITikTok from "./tiktok.svg?react";
 
 export const Discord: React.FunctionComponent<SvgIconProps> = (props) => (
   <SvgIcon {...props}>

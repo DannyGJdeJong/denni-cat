@@ -1,21 +1,21 @@
 import React from "react";
-import { createGlobalStyle } from "styled-components";
+import { GlobalStyles } from "@mui/material";
 
 import Background from "../assets/background.svg";
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    background: url(${Background}) no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
-  }
-`;
-
-export const Layout: React.FunctionComponent = ({ children }) => {
+export const Layout = ({ children }: React.PropsWithChildren) => {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyles
+        styles={{
+          body: {
+            background: `url(${Background}) no-repeat center center fixed`,
+            backgroundSize: "cover",
+            height: "100%",
+            overflow: "hidden",
+          },
+        }}
+      />
       {/* Header */}
       {children}
       {/* Footer */}
