@@ -1,10 +1,17 @@
-import React from "react";
-import { Box, Button, SvgIconProps } from "@mui/material";
+import React, { Suspense } from "react";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  SvgIconProps,
+  Switch,
+  Typography,
+} from "@mui/material";
 import { Cloud, Telegram, Twitter } from "@mui/icons-material";
 import styled from "@emotion/styled";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { Dennis } from "../assets/denni";
+import { Dennis, Dennis3D } from "../assets/denni";
 import { Barq, Discord, Mastodon, TikTok } from "../assets/logos";
 import {
   BARQ_URL,
@@ -15,6 +22,8 @@ import {
   TIKTOK_URL,
   TWITTER_URL,
 } from "../constants";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 
 const Row = styled(Box)`
   margin-top: 5px;
@@ -39,6 +48,12 @@ const LinkButton: React.FunctionComponent<{
 };
 
 const Index: React.FunctionComponent = () => {
+  const [show3D, setShow3D] = React.useState(false);
+
+  const handleSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setShow3D(event.target.checked);
+  };
+
   return (
     <Box
       sx={{
@@ -50,13 +65,36 @@ const Index: React.FunctionComponent = () => {
       }}
     >
       <Row>
-        <div style={{ width: "400px" }}>
-          <img
-            style={{ width: "100%" }}
-            src={Dennis[Math.floor(Math.random() * Dennis.length)]}
-            alt=""
-          />
+        <div style={{ width: "400px", height: "400px" }}>
+          {show3D ? (
+            <Suspense fallback={<CircularProgress />}>
+              <Canvas style={{ width: "100%" }}>
+                <Suspense fallback={null}>
+                  {Dennis3D[Math.floor(Math.random() * Dennis3D.length)]}
+                </Suspense>
+                <OrbitControls />
+              </Canvas>
+            </Suspense>
+          ) : (
+            <img
+              style={{ width: "100%" }}
+              src={Dennis[Math.floor(Math.random() * Dennis.length)]}
+              alt=""
+            />
+          )}
         </div>
+      </Row>
+      <Row>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Typography variant="h6" sx={{ color: "white" }}>
+            3D
+          </Typography>
+          <Switch
+            checked={show3D}
+            onChange={handleSwitchChange}
+            inputProps={{ "aria-label": "controlled" }}
+          />
+        </Box>
       </Row>
       <Row>
         <LinkButton href={TELEGRAM_URL} text="Telegram" icon={Telegram} />
