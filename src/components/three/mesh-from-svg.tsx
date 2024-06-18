@@ -85,7 +85,7 @@ export const MeshFromSVG = ({
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.005;
-      meshRef.current.scale.set(7, 7, 1);
+      meshRef.current.scale.set(7, 7, 7);
     }
   });
 
