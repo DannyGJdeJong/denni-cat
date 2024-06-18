@@ -15,7 +15,7 @@
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
     "@react-three/drei": "^9.107.0",
-    "@react-three/fiber": "^8.16.8",
+    "@react-three/fiber": "patch:@react-three/fiber@npm%3A8.16.8#~/.yarn/patches/@react-three-fiber-npm-8.16.8-d7457b9dde.patch",
     "@tanstack/react-query": "^5.45.1",
     "@tanstack/react-router": "^1.38.1",
     "react": "^18.2.0",
@@ -37,5 +37,6 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-svgr": "^4.2.0"
-  }
+  },
+  "packageManager": "yarn@4.3.0"
 }
