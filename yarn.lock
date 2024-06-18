@@ -1240,7 +1240,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/fiber@npm:^8.16.8":
+"@react-three/fiber@npm:8.16.8":
   version: 8.16.8
   resolution: "@react-three/fiber@npm:8.16.8"
   dependencies:
@@ -1278,6 +1278,47 @@ __metadata:
     react-native:
       optional: true
   checksum: 10c0/bf3061bcc5096857a2e659f7859570bd3acb9af067573791e47a97ecaa1fc37efb12a41c081bc7c4ebe4440ebf44016fd04a69d83c553ca61e4ded595b7fd93b
+  languageName: node
+  linkType: hard
+
+"@react-three/fiber@patch:@react-three/fiber@npm%3A8.16.8#~/.yarn/patches/@react-three-fiber-npm-8.16.8-d7457b9dde.patch":
+  version: 8.16.8
+  resolution: "@react-three/fiber@patch:@react-three/fiber@npm%3A8.16.8#~/.yarn/patches/@react-three-fiber-npm-8.16.8-d7457b9dde.patch::version=8.16.8&hash=71faf6"
+  dependencies:
+    "@babel/runtime": "npm:^7.17.8"
+    "@types/react-reconciler": "npm:^0.26.7"
+    "@types/webxr": "npm:*"
+    base64-js: "npm:^1.5.1"
+    buffer: "npm:^6.0.3"
+    its-fine: "npm:^1.0.6"
+    react-reconciler: "npm:^0.27.0"
+    react-use-measure: "npm:^2.1.1"
+    scheduler: "npm:^0.21.0"
+    suspend-react: "npm:^0.1.3"
+    zustand: "npm:^3.7.1"
+  peerDependencies:
+    expo: ">=43.0"
+    expo-asset: ">=8.4"
+    expo-file-system: ">=11.0"
+    expo-gl: ">=11.0"
+    react: ">=18.0"
+    react-dom: ">=18.0"
+    react-native: ">=0.64"
+    three: ">=0.133"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+    expo-asset:
+      optional: true
+    expo-file-system:
+      optional: true
+    expo-gl:
+      optional: true
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 10c0/3e85606874ed47c9a8183129bafdbbac7886c6067e852319920f65709d18dedf306d9f8e5911edbb5f81ab1b19e7567f0f44bfc99557c3469750e004f87023aa
   languageName: node
   linkType: hard
 
@@ -2402,7 +2443,7 @@ __metadata:
     "@mui/icons-material": "npm:^5.15.20"
     "@mui/material": "npm:^5.15.20"
     "@react-three/drei": "npm:^9.107.0"
-    "@react-three/fiber": "npm:^8.16.8"
+    "@react-three/fiber": "patch:@react-three/fiber@npm%3A8.16.8#~/.yarn/patches/@react-three-fiber-npm-8.16.8-d7457b9dde.patch"
     "@tanstack/react-query": "npm:^5.45.1"
     "@tanstack/react-router": "npm:^1.38.1"
     "@tanstack/router-vite-plugin": "npm:^1.39.1"
