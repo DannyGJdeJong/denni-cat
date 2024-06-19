@@ -32,7 +32,7 @@ export const MeshFromSVG = ({
   const shapes = useMemo(() => {
     const allShapes: THREE.Shape[] = [];
     svgData.paths.forEach((path) => {
-      path.toShapes(true).forEach((shape) => {
+      path.toShapes(false).forEach((shape) => {
         shape.autoClose = true;
 
         allShapes.push(shape);

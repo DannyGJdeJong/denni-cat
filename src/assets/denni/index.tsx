@@ -69,11 +69,10 @@ export const DenniHunk3D: React.FunctionComponent<MeshProps> = ({
     {...props}
   />
 );
-// TODO: Fix broken 3D models
 export const Dennis3D = [
-  // DenniHi3D,
+  DenniHi3D,
   DenniWoozy3D,
   DenniBadge3D,
   DenniLift3D,
-  // DenniHunk3D,
+  DenniHunk3D,
 ];
