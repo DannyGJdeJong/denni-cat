@@ -24,6 +24,7 @@ import {
 } from "../constants";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
 
 const Row = styled(Box)`
   margin-top: 5px;
@@ -70,7 +71,9 @@ const Index: React.FunctionComponent = () => {
             <Suspense fallback={<CircularProgress />}>
               <Canvas style={{ width: "100%" }}>
                 <Suspense fallback={null}>
-                  {Dennis3D[Math.floor(Math.random() * Dennis3D.length)]}
+                  {Dennis3D[Math.floor(Math.random() * Dennis3D.length)]({
+                    scale: new THREE.Vector3(7, 7, 7),
+                  })}
                 </Suspense>
                 <OrbitControls />
               </Canvas>

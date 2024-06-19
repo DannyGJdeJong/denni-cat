@@ -1,4 +1,4 @@
-import { useFrame, useLoader } from "@react-three/fiber";
+import { MeshProps, useFrame, useLoader } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { useTexture } from "@react-three/drei";
@@ -7,9 +7,15 @@ import { SVGLoader } from "three/examples/jsm/Addons.js";
 export const MeshFromSVG = ({
   svgPath,
   imagePath,
+  rotationSpeed = 0.005,
+  thickness = 0.02,
+  ...props
 }: {
   svgPath: string;
   imagePath: string;
+  rotationSpeed?: number;
+  thickness?: number;
+  props?: MeshProps;
 }) => {
   const meshRef =
     useRef<
@@ -39,7 +45,7 @@ export const MeshFromSVG = ({
 
   const geometry = useMemo(() => {
     const extrudeSettings = {
-      depth: 0.02,
+      depth: thickness,
       bevelEnabled: false,
     };
 
@@ -61,7 +67,7 @@ export const MeshFromSVG = ({
 
     geometry.center();
     return geometry;
-  }, [shapes]);
+  }, [shapes, thickness]);
 
   // Load texture
   const texture = useTexture(imagePath);
@@ -84,8 +90,7 @@ export const MeshFromSVG = ({
 
   useFrame(() => {
     if (meshRef.current) {
-      meshRef.current.rotation.y += 0.005;
-      meshRef.current.scale.set(7, 7, 7);
+      meshRef.current.rotation.y += rotationSpeed;
     }
   });
 
@@ -94,6 +99,7 @@ export const MeshFromSVG = ({
       ref={meshRef}
       geometry={geometry}
       material={[material, greyMaterial]}
+      {...props}
     />
   );
 };
