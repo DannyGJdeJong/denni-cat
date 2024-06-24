@@ -12,7 +12,6 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
             background: `url("${Background}") no-repeat center center fixed`,
             backgroundSize: "cover",
             height: "100%",
-            overflow: "hidden",
           },
         }}
       />
