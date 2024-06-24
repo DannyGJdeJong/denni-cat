@@ -7,7 +7,7 @@ import {
   Switch,
   Typography,
 } from "@mui/material";
-import { Cloud, Telegram, Twitter } from "@mui/icons-material";
+import { Cloud, Instagram, Telegram, Twitter } from "@mui/icons-material";
 import styled from "@emotion/styled";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
@@ -17,6 +17,7 @@ import {
   BARQ_URL,
   BLUESKY_URL,
   DISCORD_URL,
+  INSTAGRAM_URL,
   MASTODON_URL,
   TELEGRAM_URL,
   TIKTOK_URL,
@@ -110,6 +111,9 @@ const Index: React.FunctionComponent = () => {
       </Row>
       <Row>
         <LinkButton href="/ad" text="AD Twitter" icon={Twitter} />
+      </Row>
+      <Row>
+        <LinkButton href={INSTAGRAM_URL} text="Instagram" icon={Instagram} />
       </Row>
       <Row>
         <LinkButton href={MASTODON_URL} text="Mastodon" icon={Mastodon} />
