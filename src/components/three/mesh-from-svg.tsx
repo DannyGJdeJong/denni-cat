@@ -1,8 +1,15 @@
 import { MeshProps, useFrame, useLoader } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { useTexture } from "@react-three/drei";
 import { SVGLoader } from "three/examples/jsm/Addons.js";
+
+type MeshFromSVGProps = {
+  svgPath: string;
+  imagePath: string;
+  rotationSpeed?: number;
+  thickness?: number;
+} & MeshProps;
 
 export const MeshFromSVG = ({
   svgPath,
@@ -10,21 +17,8 @@ export const MeshFromSVG = ({
   rotationSpeed = 0.005,
   thickness = 0.02,
   ...props
-}: {
-  svgPath: string;
-  imagePath: string;
-  rotationSpeed?: number;
-  thickness?: number;
-  props?: MeshProps;
-}) => {
-  const meshRef =
-    useRef<
-      THREE.Mesh<
-        THREE.BufferGeometry<THREE.NormalBufferAttributes>,
-        THREE.Material | THREE.Material[],
-        THREE.Object3DEventMap
-      >
-    >(null);
+}: MeshFromSVGProps) => {
+  const meshRef = useRef<THREE.Mesh>(null);
 
   // Load SVG
   const svgData = useLoader(SVGLoader, svgPath);
@@ -41,14 +35,14 @@ export const MeshFromSVG = ({
     return allShapes;
   }, [svgData]);
 
-  const [geometrySize, setGeometrySize] = useState(new THREE.Vector2(0, 0));
-
-  const geometry = useMemo(() => {
+  // Create geometry
+  const { geometry, geometrySize } = useMemo(() => {
     const extrudeSettings = {
       depth: thickness,
       bevelEnabled: false,
     };
 
+    const geometrySize = new THREE.Vector2(0, 0);
     const geometry = new THREE.ExtrudeGeometry(shapes, extrudeSettings);
     geometry.computeBoundingBox();
 
@@ -56,7 +50,7 @@ export const MeshFromSVG = ({
       const x = geometry.boundingBox.max.x - geometry.boundingBox.min.x;
       const y = geometry.boundingBox.max.y - geometry.boundingBox.min.y;
 
-      setGeometrySize(new THREE.Vector2(x, y));
+      geometrySize.set(x, y);
 
       const scale = 1 / Math.max(x, y);
 
@@ -64,30 +58,37 @@ export const MeshFromSVG = ({
     }
 
     geometry.applyMatrix4(new THREE.Matrix4().makeRotationX(Math.PI));
-
     geometry.center();
-    return geometry;
+
+    return { geometry, geometrySize };
   }, [shapes, thickness]);
 
-  // Load texture
+  // Load and configure texture
   const texture = useTexture(imagePath);
   texture.magFilter = THREE.NearestFilter;
   texture.flipY = false;
-
-  useEffect(() => {
-    texture.repeat.set(1 / geometrySize.x, 1 / geometrySize.y);
-  }, [texture.repeat, geometrySize]);
-
   texture.colorSpace = THREE.SRGBColorSpace;
+  texture.repeat.set(1 / geometrySize.x, 1 / geometrySize.y);
 
-  const material = new THREE.MeshBasicMaterial({
-    map: texture,
-  });
+  // Create materials
+  const materials = useMemo(
+    () => [
+      new THREE.MeshBasicMaterial({ map: texture }),
+      new THREE.MeshBasicMaterial({ color: "lightgray" }),
+    ],
+    [texture]
+  );
 
-  const greyMaterial = new THREE.MeshBasicMaterial({
-    color: "lightgray",
-  });
+  // Cleanup
+  useEffect(() => {
+    return () => {
+      geometry.dispose();
+      texture.dispose();
+      materials.forEach((material) => material.dispose());
+    };
+  }, [geometry, texture, materials]);
 
+  // Rotate the mesh
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += rotationSpeed;
@@ -95,12 +96,7 @@ export const MeshFromSVG = ({
   });
 
   return (
-    <mesh
-      ref={meshRef}
-      geometry={geometry}
-      material={[material, greyMaterial]}
-      {...props}
-    />
+    <mesh ref={meshRef} geometry={geometry} material={materials} {...props} />
   );
 };
 
